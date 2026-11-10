@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --paper-bg: #F6F5F0;
+    --paper-elevated: #FFFFFF;
+    --paper-muted: #EFECE6;
+    --ink-primary: #0F1420;
+    --ink-secondary: #374151;
+    --royal-blue: #17368A;
+    --duke-navy: #091124;
+    --academic-gold: #C5A059;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #F6F5F0;
+    color: #0F1420;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}
+
+.font-editorial {
+  font-family: 'Cormorant Garamond', Georgia, Cambria, serif;
+}
+
+.font-sans-ui {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.font-mono-code {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.paper-grain {
+  background-color: #F6F5F0;
+  background-image:
+    radial-gradient(rgba(15, 20, 32, 0.03) 1px, transparent 0),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.65), rgba(239, 236, 230, 0.4));
+  background-size: 28px 28px, 100% 100%;
+}
+
+.ivory-surface {
+  background-color: #FAF9F5;
+  background-image: radial-gradient(rgba(23, 54, 138, 0.025) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.oxford-navy-surface {
+  background: radial-gradient(circle at 50% 0%, #16264C 0%, #091124 70%, #060B18 100%);
+}
+
+.royal-charter-surface {
+  background: radial-gradient(circle at 50% 10%, #2349B5 0%, #17368A 55%, #0F2463 100%);
+}
+
+.soft-card {
+  background-color: #FFFFFF;
+  border-radius: 1.25rem;
+  box-shadow: 0 14px 38px -12px rgba(15, 20, 32, 0.07);
+}
+
+.soft-card-subtle {
+  background-color: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(12px);
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 30px -10px rgba(15, 20, 32, 0.06);
+}
+
+.soft-glass-dark {
+  background: rgba(15, 25, 50, 0.72);
+  backdrop-filter: blur(14px);
+  border-radius: 1.25rem;
+  box-shadow: 0 18px 42px -12px rgba(0, 0, 0, 0.35);
+}
+
+.plaque-frame {
+  background: linear-gradient(165deg, #151E36 0%, #0A1020 100%);
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 45px -15px rgba(9, 17, 36, 0.45);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #EFECE6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #17368A;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #091124;
+}
