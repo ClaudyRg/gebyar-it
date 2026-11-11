@@ -47,14 +47,15 @@ export const LabDetailPage: React.FC = () => {
 
   return (
     <main className="paper-grain min-h-screen text-center">
-      <section className="relative bg-[#070E1E] text-white overflow-hidden py-14 lg:py-20">
-        <div className="absolute inset-0">
+      <section className="relative bg-[#070E1E] text-white overflow-hidden py-16 lg:py-24">
+        <div className="absolute inset-0 pointer-events-none">
           <img
             src={lab.heroImage}
             alt={lab.fullName}
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover object-center filter brightness-[0.45] contrast-110"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#070E1E]/95 via-[#091124]/90 to-[#070E1E]" />
+          <div className="absolute inset-0 bg-[#070E1E]/80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070E1E] via-transparent to-[#070E1E]/85" />
         </div>
 
         <div className="relative z-10 max-w-[1536px] mx-auto px-4 sm:px-8 lg:px-12 text-left">

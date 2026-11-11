@@ -33,19 +33,20 @@ export const HomePage: React.FC = () => {
       <section className="relative bg-[#050B17] text-white overflow-hidden py-24 lg:py-32 text-center">
         <div className="absolute inset-0 pointer-events-none">
           <img
-            src="./assets/fasilitas/se-1.jpg"
-            alt="Laboratorium Teknik Informatika UIKA"
-            className="w-full h-full object-cover object-center scale-105 filter brightness-[0.55] contrast-110"
+            src="./assets/uika-fts-campus.jpg"
+            alt="Gedung Fakultas Teknik dan Sains Universitas Ibn Khaldun Bogor"
+            className="w-full h-full object-cover object-center scale-105 filter brightness-[0.52] contrast-115"
           />
           <div className="absolute inset-0 bg-[#070E22]/75" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050B17] via-transparent to-[#050B17]/80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050B17] via-transparent to-[#050B17]/85" />
         </div>
 
         <div className="relative max-w-[1536px] mx-auto px-4 sm:px-8 lg:px-12 flex flex-col items-center">
           <div className="max-w-4xl mx-auto flex flex-col items-center">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-[#E5C17B] text-xs font-mono-code uppercase tracking-widest font-semibold mb-4">
               <span className="w-2 h-2 rounded-full bg-[#E5C17B] animate-pulse" />
-              <span>Portal Informasi Laboratorium Keilmuan</span>
+              <span>FAKULTAS TEKNIK DAN SAINS
+                UNIVERSITAS IBN KHALDUN BOGOR</span>
             </div>
 
             <h1 className="font-editorial text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white mt-3 leading-[1.08]">
@@ -306,11 +307,10 @@ export const HomePage: React.FC = () => {
                   key={id}
                   type="button"
                   onClick={() => setSelectedHeadTab(id)}
-                  className={`px-5 py-2 rounded-full text-xs font-mono-code uppercase tracking-wider transition cursor-pointer ${
-                    isSelected
-                      ? 'bg-[#C5A059] text-[#091124] font-bold shadow-md'
-                      : 'bg-white/10 text-white hover:bg-white/20'
-                  }`}
+                  className={`px-5 py-2 rounded-full text-xs font-mono-code uppercase tracking-wider transition cursor-pointer ${isSelected
+                    ? 'bg-[#C5A059] text-[#091124] font-bold shadow-md'
+                    : 'bg-white/10 text-white hover:bg-white/20'
+                    }`}
                 >
                   KaLab {lab.shortName}
                 </button>
