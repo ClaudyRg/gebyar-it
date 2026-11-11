@@ -43,10 +43,8 @@ export const HomePage: React.FC = () => {
 
         <div className="relative max-w-[1536px] mx-auto px-4 sm:px-8 lg:px-12 flex flex-col items-center">
           <div className="max-w-4xl mx-auto flex flex-col items-center">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-[#E5C17B] text-xs font-mono-code uppercase tracking-widest font-semibold mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#E5C17B] animate-pulse" />
-              <span>FAKULTAS TEKNIK DAN SAINS
-                UNIVERSITAS IBN KHALDUN BOGOR</span>
+            <div className="text-[#E5C17B] text-xs font-mono-code uppercase tracking-[0.25em] font-semibold mb-3">
+              Fakultas Teknik dan Sains · Universitas Ibn Khaldun Bogor
             </div>
 
             <h1 className="font-editorial text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white mt-3 leading-[1.08]">
