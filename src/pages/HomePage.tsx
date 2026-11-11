@@ -5,16 +5,10 @@ import {
   ArrowUpRight,
   Compass,
   BookOpen,
-  Award,
-  Users,
   Building2,
-  Sparkles,
-  GraduationCap,
   Layers,
   Mail,
   Phone,
-  ShieldCheck,
-  CheckCircle2,
   ChevronRight
 } from 'lucide-react';
 import {
@@ -22,59 +16,28 @@ import {
   DEPARTMENT_METRICS,
   LabId
 } from '../data/labsData';
-import { SpecializationAdvisor } from '../components/SpecializationAdvisor';
 import { SynergyAndComparison } from '../components/SynergyAndComparison';
 import { ArchiveAndNewsSection } from '../components/ArchiveAndNewsSection';
 
 export const HomePage: React.FC = () => {
-  const [selectedFacultyLab, setSelectedFacultyLab] = useState<'all' | LabId>('all');
   const [selectedHeadTab, setSelectedHeadTab] = useState<LabId>('se');
 
   const labOrder: LabId[] = ['se', 'csn', 'git', 'keris'];
-
-  const allLecturers = labOrder.flatMap((id) =>
-    LABS_DATA[id].lecturers.map((lec) => ({
-      ...lec,
-      labId: id,
-      labShort: LABS_DATA[id].shortName,
-      labFull: LABS_DATA[id].fullName,
-      labAccent: LABS_DATA[id].accentHex
-    }))
-  );
-
-  const filteredLecturers =
-    selectedFacultyLab === 'all'
-      ? allLecturers
-      : allLecturers.filter((l) => l.labId === selectedFacultyLab);
 
   const activeHeadLab = LABS_DATA[selectedHeadTab];
   const activeHeadLecturer =
     activeHeadLab.lecturers.find((l) => l.isHead) || activeHeadLab.lecturers[0];
 
   return (
-    <main className="text-center">
-      <section className="relative bg-[#070E1E] text-white py-16 lg:py-24 overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="./assets/gallery/git-leuwiliang.jpg"
-            alt="Kampus Teknik Informatika UIKA Bogor"
-            className="w-full h-full object-cover object-center opacity-20 scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#070E1E]/95 via-[#091124]/90 to-[#070E1E]" />
-        </div>
+    <main className="min-h-screen">
+      <section className="relative bg-[#070D1C] text-white overflow-hidden py-20 lg:py-28 text-center">
+        <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:24px_24px]" />
 
-        <div className="relative z-10 max-w-[1536px] mx-auto px-4 sm:px-8 lg:px-12 text-center">
+        <div className="relative max-w-[1536px] mx-auto px-4 sm:px-8 lg:px-12 flex flex-col items-center">
           <div className="max-w-4xl mx-auto flex flex-col items-center">
-            <div className="w-16 h-16 rounded-2xl bg-white/10 p-2.5 backdrop-blur-md shadow-2xl flex items-center justify-center mb-5 border border-white/15">
-              <img
-                src="./assets/uika-crest.png"
-                alt="Lambang UIKA Bogor"
-                className="w-full h-full object-contain"
-              />
-            </div>
-
-            <div className="text-[11px] sm:text-xs font-mono-code uppercase tracking-[0.3em] text-[#E5C17B] font-semibold">
-              PORTAL INFORMASI AKADEMIK · TEKNIK INFORMATIKA UIKA BOGOR
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-[#E5C17B] text-xs font-mono-code uppercase tracking-widest font-semibold mb-4">
+              <span className="w-2 h-2 rounded-full bg-[#E5C17B] animate-pulse" />
+              <span>Portal Informasi Laboratorium Keilmuan</span>
             </div>
 
             <h1 className="font-editorial text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white mt-3 leading-[1.08]">
@@ -99,13 +62,13 @@ export const HomePage: React.FC = () => {
                 <span>Buka Direktori 4 Lab</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
-              <a
-                href="#specialization-advisor"
+              <Link
+                to="/advisor"
                 className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-xs font-mono-code uppercase tracking-widest font-semibold px-7 py-3.5 rounded-full transition border border-white/15"
               >
                 <Compass className="w-4 h-4 text-[#E5C17B]" />
-                <span>Simulasi Peminatan</span>
-              </a>
+                <span>Asesmen Peminatan</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -391,98 +354,7 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      <section id="faculty-directory" className="py-20 ivory-surface text-left">
-        <div className="max-w-[1536px] mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="max-w-3xl mb-10">
-            <div className="inline-flex items-center gap-2 text-xs font-mono-code uppercase tracking-[0.2em] text-[#17368A] font-bold mb-2">
-              <Users className="w-4 h-4" />
-              <span>Struktur Organisasi & Dewan Dosen · 21 Peneliti Aktif</span>
-            </div>
-            <h2 className="font-editorial text-3xl sm:text-5xl font-bold text-[#0F1420]">
-              Direktori Dosen & Peneliti Laboratorium
-            </h2>
-            <div className="w-16 h-1 bg-[#17368A] my-4" />
-          </div>
-
-          <div className="flex flex-wrap gap-2 mb-10">
-            {(['all', 'se', 'csn', 'git', 'keris'] as const).map((filterKey) => (
-              <button
-                key={filterKey}
-                type="button"
-                onClick={() => setSelectedFacultyLab(filterKey)}
-                className={`px-5 py-2 rounded-full text-xs font-mono-code uppercase tracking-wider transition cursor-pointer ${
-                  selectedFacultyLab === filterKey
-                    ? 'bg-[#17368A] text-white font-semibold shadow-sm'
-                    : 'bg-white text-[#374151] hover:bg-[#EBE7DE] shadow-2xs'
-                }`}
-              >
-                {filterKey === 'all'
-                  ? `Semua Dosen (${allLecturers.length})`
-                  : `Lab ${filterKey.toUpperCase()} (${LABS_DATA[filterKey].lecturers.length})`}
-              </button>
-            ))}
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredLecturers.map((lec) => (
-              <div
-                key={`${lec.labId}-${lec.id}`}
-                className="soft-card p-6 flex flex-col items-center text-center justify-between group hover:-translate-y-1 transition"
-              >
-                <div className="flex flex-col items-center">
-                  <div className="relative w-28 h-28 rounded-full overflow-hidden bg-[#091124] shadow-md mb-4">
-                    <img
-                      src={lec.photo}
-                      alt={lec.name}
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
-                    />
-                  </div>
-
-                  <div className="flex flex-wrap items-center justify-center gap-1.5 mb-2">
-                    <span
-                      className="px-2.5 py-0.5 rounded-full text-[10px] font-mono-code font-bold uppercase text-white"
-                      style={{ backgroundColor: lec.labAccent }}
-                    >
-                      LAB {lec.labShort}
-                    </span>
-                    {lec.isHead && (
-                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono-code font-bold uppercase bg-[#C5A059] text-[#091124]">
-                        Kepala Lab
-                      </span>
-                    )}
-                  </div>
-
-                  <h3 className="font-editorial text-xl font-bold text-[#0F1420] leading-snug">
-                    {lec.name}
-                  </h3>
-                  <div className="text-[11px] font-mono-code text-[#17368A] font-semibold mt-1">
-                    {lec.role}
-                  </div>
-                  <p className="text-xs text-[#4B5563] mt-2 leading-relaxed">
-                    {lec.specialization}
-                  </p>
-                  {lec.historicalRole && (
-                    <div className="mt-2.5 px-3 py-1 rounded-full bg-[#F6F5F0] text-[10px] font-mono-code text-[#4B5563]">
-                      {lec.historicalRole}
-                    </div>
-                  )}
-                </div>
-
-                <Link
-                  to={`/lab/${lec.labId}`}
-                  className="mt-5 inline-flex items-center gap-1 text-xs font-mono-code text-[#17368A] font-bold hover:underline"
-                >
-                  <span>Lihat Profil Lab {lec.labShort}</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <SynergyAndComparison />
-      <SpecializationAdvisor />
       <ArchiveAndNewsSection />
     </main>
   );

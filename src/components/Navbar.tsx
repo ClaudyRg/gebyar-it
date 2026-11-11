@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   Menu,
   X,
   Compass,
-  Award,
-  Layers,
   BookOpen,
   ArrowUpRight,
   Building2,
-  MapPin,
-  Scale
+  MapPin
 } from 'lucide-react';
 import { LABS_DATA, LabId } from '../data/labsData';
 
@@ -18,7 +15,6 @@ export const Navbar: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -28,28 +24,14 @@ export const Navbar: React.FC = () => {
 
   useEffect(() => {
     setMobileOpen(false);
-  }, [location.pathname, location.hash]);
-
-  const scrollToSection = (sectionId: string) => {
-    setMobileOpen(false);
-    if (location.pathname !== '/') {
-      navigate('/');
-      setTimeout(() => {
-        const el = document.getElementById(sectionId);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 120);
-    } else {
-      const el = document.getElementById(sectionId);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  }, [location.pathname]);
 
   const labOrder: LabId[] = ['se', 'csn', 'git', 'keris'];
 
   return (
     <header className="sticky top-0 z-50 w-full">
       <div className="bg-[#091124] text-[#D8D4C8] text-[11px] font-mono-code tracking-wider">
-        <div className="max-w-[1536px] mx-auto px-4 sm:px-8 lg:px-12 h-9 flex items-center justify-center sm:justify-between">
+        <div className="max-w-[1536px] mx-auto px-4 sm:px-8 lg:px-12 h-9 flex items-center justify-between">
           <div className="flex items-center gap-3 truncate">
             <span className="inline-flex items-center gap-1.5 text-[#E5C17B] font-semibold">
               <Building2 className="w-3.5 h-3.5" />
@@ -60,28 +42,8 @@ export const Navbar: React.FC = () => {
               FAKULTAS TEKNIK DAN SAINS · PROGRAM STUDI TEKNIK INFORMATIKA
             </span>
           </div>
-          <div className="hidden sm:flex items-center gap-5 shrink-0">
-            <button
-              onClick={() => scrollToSection('compare-labs')}
-              className="inline-flex items-center gap-1.5 text-white/75 hover:text-white transition cursor-pointer"
-            >
-              <Scale className="w-3 h-3 text-[#E5C17B]" />
-              Komparasi Lab
-            </button>
-            <button
-              onClick={() => scrollToSection('synergy-blueprint')}
-              className="inline-flex items-center gap-1.5 text-white/75 hover:text-white transition cursor-pointer"
-            >
-              <Layers className="w-3 h-3 text-[#E5C17B]" />
-              Sinergi 5 Lab
-            </button>
-            <button
-              onClick={() => scrollToSection('documentary-archive')}
-              className="inline-flex items-center gap-1.5 text-white/75 hover:text-white transition cursor-pointer"
-            >
-              <Award className="w-3 h-3 text-[#E5C17B]" />
-              Arsip & Prestasi
-            </button>
+          <div className="hidden sm:flex items-center gap-4 shrink-0 text-xs text-[#E5C17B]">
+            <span>Portal Riset & Peminatan Mahasiswa</span>
           </div>
         </div>
       </div>
@@ -158,24 +120,21 @@ export const Navbar: React.FC = () => {
                   </Link>
                 );
               })}
-
-              <button
-                onClick={() => scrollToSection('faculty-directory')}
-                className="px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider text-[#1F2937] hover:text-[#17368A] hover:bg-[#17368A]/5 transition cursor-pointer"
-              >
-                Dosen
-              </button>
             </nav>
 
             <div className="hidden lg:flex items-center">
-              <button
-                onClick={() => scrollToSection('specialization-advisor')}
-                className="inline-flex items-center gap-2 bg-[#17368A] hover:bg-[#091124] text-white text-xs font-semibold uppercase tracking-wider px-5 py-2.5 rounded-full transition shadow-sm cursor-pointer"
+              <Link
+                to="/advisor"
+                className={`inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider px-5 py-2.5 rounded-full transition shadow-sm ${
+                  location.pathname === '/advisor'
+                    ? 'bg-[#C5A059] text-[#091124] font-bold shadow-md'
+                    : 'bg-[#17368A] hover:bg-[#091124] text-white'
+                }`}
               >
                 <Compass className="w-3.5 h-3.5 text-[#E5C17B]" />
                 <span>Asesmen Peminatan</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
-              </button>
+              </Link>
             </div>
 
             <button
@@ -214,6 +173,18 @@ export const Navbar: React.FC = () => {
                 <span>Direktori 4 Laboratorium</span>
               </Link>
 
+              <Link
+                to="/advisor"
+                className={`px-4 py-2.5 rounded-full text-sm font-semibold flex items-center justify-center gap-2 ${
+                  location.pathname === '/advisor'
+                    ? 'bg-[#C5A059] text-[#091124] font-bold'
+                    : 'bg-[#17368A] text-white'
+                }`}
+              >
+                <Compass className="w-4 h-4" />
+                <span>Asesmen Rekomendasi Peminatan</span>
+              </Link>
+
               <div className="pt-2 pb-1 text-[11px] font-mono-code uppercase tracking-widest text-[#6B7280]">
                 Halaman Khusus Laboratorium
               </div>
@@ -236,23 +207,6 @@ export const Navbar: React.FC = () => {
                   </Link>
                 );
               })}
-            </div>
-
-            <div className="pt-2 grid grid-cols-2 gap-2">
-              <button
-                onClick={() => scrollToSection('specialization-advisor')}
-                className="flex items-center justify-center gap-1.5 bg-[#17368A] text-white text-xs font-semibold uppercase tracking-wider py-2.5 px-3 rounded-full"
-              >
-                <Compass className="w-3.5 h-3.5" />
-                Asesmen Lab
-              </button>
-              <button
-                onClick={() => scrollToSection('explore-labs')}
-                className="flex items-center justify-center gap-1.5 bg-[#091124] text-white text-xs font-semibold uppercase tracking-wider py-2.5 px-3 rounded-full"
-              >
-                <Layers className="w-3.5 h-3.5" />
-                Katalog Lab
-              </button>
             </div>
 
             <div className="text-[11px] text-[#4B5563] flex items-center justify-center gap-1.5 pt-1 font-mono-code">

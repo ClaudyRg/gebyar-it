@@ -5,6 +5,7 @@ import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
 import { DirectoryPage } from './pages/DirectoryPage';
 import { LabDetailPage } from './pages/LabDetailPage';
+import { AdvisorPage } from './pages/AdvisorPage';
 
 export const App: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ export const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/directory" element={<DirectoryPage />} />
+            <Route path="/advisor" element={<AdvisorPage />} />
             <Route path="/lab/:labId" element={<LabDetailPage />} />
           </Routes>
         </div>
