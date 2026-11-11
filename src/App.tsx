@@ -3,6 +3,7 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
+import { DirectoryPage } from './pages/DirectoryPage';
 import { LabDetailPage } from './pages/LabDetailPage';
 
 export const App: React.FC = () => {
@@ -13,6 +14,7 @@ export const App: React.FC = () => {
         <div className="flex-1">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/directory" element={<DirectoryPage />} />
             <Route path="/lab/:labId" element={<LabDetailPage />} />
           </Routes>
         </div>
@@ -23,4 +25,3 @@ export const App: React.FC = () => {
 };
 
 export default App;
-

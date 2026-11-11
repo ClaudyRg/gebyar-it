@@ -89,7 +89,7 @@ export const Navbar: React.FC = () => {
       <div
         className={`transition-all duration-300 ${
           scrolled
-            ? 'bg-[#FAF9F5]/92 backdrop-blur-md shadow-[0_8px_30px_rgba(15,20,32,0.06)]'
+            ? 'bg-[#FAF9F5]/95 backdrop-blur-md shadow-[0_8px_30px_rgba(15,20,32,0.06)]'
             : 'bg-[#F6F5F0]/95 backdrop-blur-xs'
         }`}
       >
@@ -103,9 +103,9 @@ export const Navbar: React.FC = () => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col text-left">
                 <span className="text-[10px] font-mono-code uppercase tracking-[0.2em] text-[#17368A] font-semibold">
-                  Katalog Akademik · Gebyar IT 2026
+                  Portal Informasi Akademik · UIKA
                 </span>
                 <span className="font-editorial text-xl sm:text-2xl font-bold tracking-tight text-[#0F1420] leading-none mt-0.5 group-hover:text-[#17368A] transition">
                   Laboratorium Teknik Informatika
@@ -113,7 +113,7 @@ export const Navbar: React.FC = () => {
               </div>
             </Link>
 
-            <nav className="hidden lg:flex items-center gap-1.5 bg-white/70 px-3 py-1.5 rounded-full shadow-2xs">
+            <nav className="hidden lg:flex items-center gap-1.5 bg-white/80 px-3.5 py-1.5 rounded-full shadow-2xs border border-[#EBE7DE]">
               <Link
                 to="/"
                 className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition ${
@@ -123,6 +123,18 @@ export const Navbar: React.FC = () => {
                 }`}
               >
                 Beranda
+              </Link>
+
+              <Link
+                to="/directory"
+                className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition flex items-center gap-1.5 ${
+                  location.pathname === '/directory'
+                    ? 'bg-[#17368A] text-white shadow-xs'
+                    : 'text-[#1F2937] hover:text-[#17368A] hover:bg-[#17368A]/5'
+                }`}
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>Direktori Lab</span>
               </Link>
 
               {labOrder.map((labId) => {
@@ -177,7 +189,7 @@ export const Navbar: React.FC = () => {
         </div>
 
         {mobileOpen && (
-          <div className="lg:hidden bg-[#FAF9F5] px-4 pt-4 pb-6 space-y-4 shadow-xl text-center">
+          <div className="lg:hidden bg-[#FAF9F5] px-4 pt-4 pb-6 space-y-4 shadow-xl text-center border-t border-[#EBE7DE]">
             <div className="grid grid-cols-1 gap-1.5">
               <Link
                 to="/"
@@ -187,11 +199,23 @@ export const Navbar: React.FC = () => {
                     : 'text-[#111318] hover:bg-[#EBE7DE]/60'
                 }`}
               >
-                Beranda Utama — Ikhtisar Departemen
+                Beranda Portal
+              </Link>
+
+              <Link
+                to="/directory"
+                className={`px-4 py-2.5 rounded-full text-sm font-semibold flex items-center justify-center gap-2 ${
+                  location.pathname === '/directory'
+                    ? 'bg-[#17368A] text-white'
+                    : 'bg-white text-[#111318] shadow-2xs'
+                }`}
+              >
+                <BookOpen className="w-4 h-4 text-[#C5A059]" />
+                <span>Direktori 4 Laboratorium</span>
               </Link>
 
               <div className="pt-2 pb-1 text-[11px] font-mono-code uppercase tracking-widest text-[#6B7280]">
-                Halaman Khusus Setiap Laboratorium
+                Halaman Khusus Laboratorium
               </div>
 
               {labOrder.map((labId) => {
@@ -223,17 +247,17 @@ export const Navbar: React.FC = () => {
                 Asesmen Lab
               </button>
               <button
-                onClick={() => scrollToSection('compare-labs')}
+                onClick={() => scrollToSection('explore-labs')}
                 className="flex items-center justify-center gap-1.5 bg-[#091124] text-white text-xs font-semibold uppercase tracking-wider py-2.5 px-3 rounded-full"
               >
-                <BookOpen className="w-3.5 h-3.5" />
-                Komparasi 4 Lab
+                <Layers className="w-3.5 h-3.5" />
+                Katalog Lab
               </button>
             </div>
 
-            <div className="text-[11px] text-[#4B5563] flex items-center justify-center gap-1.5 pt-1">
+            <div className="text-[11px] text-[#4B5563] flex items-center justify-center gap-1.5 pt-1 font-mono-code">
               <MapPin className="w-3.5 h-3.5 text-[#17368A] shrink-0" />
-              <span>Jl. Sholeh Iskandar KM. 2, Kd. Badak, Kota Bogor 16162</span>
+              <span>Jl. Sholeh Iskandar KM. 2, Kedung Badak, Kota Bogor 16162</span>
             </div>
           </div>
         )}
