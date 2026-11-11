@@ -30,15 +30,15 @@ export const HomePage: React.FC = () => {
 
   return (
     <main className="min-h-screen">
-      <section className="relative bg-[#070D1C] text-white overflow-hidden py-24 lg:py-32 text-center">
+      <section className="relative bg-[#050B17] text-white overflow-hidden py-24 lg:py-32 text-center">
         <div className="absolute inset-0 pointer-events-none">
           <img
             src="./assets/fasilitas/se-1.jpg"
             alt="Laboratorium Teknik Informatika UIKA"
-            className="w-full h-full object-cover object-center scale-105 filter blur-[1px] brightness-[0.28] contrast-125"
+            className="w-full h-full object-cover object-center scale-105 filter brightness-[0.55] contrast-110"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#070D1C]/90 via-[#0A1633]/85 to-[#070D1C]" />
-          <div className="absolute inset-0 bg-[#091124]/40 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-[#070E22]/75" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050B17] via-transparent to-[#050B17]/80" />
         </div>
 
         <div className="relative max-w-[1536px] mx-auto px-4 sm:px-8 lg:px-12 flex flex-col items-center">

@@ -75,13 +75,13 @@ export const Navbar: React.FC = () => {
               </div>
             </Link>
 
-            <nav className="hidden lg:flex items-center gap-1.5 bg-white/80 px-3.5 py-1.5 rounded-full shadow-2xs border border-[#EBE7DE]">
+            <nav className="hidden lg:flex items-center gap-1.5 bg-[#FAF9F5] px-3.5 py-1.5 rounded-full shadow-sm border border-[#DDD8CB]">
               <Link
                 to="/"
-                className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition ${
+                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition ${
                   location.pathname === '/'
                     ? 'bg-[#17368A] text-white shadow-xs'
-                    : 'text-[#1F2937] hover:text-[#17368A] hover:bg-[#17368A]/5'
+                    : 'text-[#111827] hover:text-[#17368A] hover:bg-black/5'
                 }`}
               >
                 Beranda
@@ -89,10 +89,10 @@ export const Navbar: React.FC = () => {
 
               <Link
                 to="/directory"
-                className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition flex items-center gap-1.5 ${
+                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition flex items-center gap-1.5 ${
                   location.pathname === '/directory'
                     ? 'bg-[#17368A] text-white shadow-xs'
-                    : 'text-[#1F2937] hover:text-[#17368A] hover:bg-[#17368A]/5'
+                    : 'text-[#111827] hover:text-[#17368A] hover:bg-black/5'
                 }`}
               >
                 <BookOpen className="w-3.5 h-3.5" />
@@ -106,14 +106,14 @@ export const Navbar: React.FC = () => {
                   <Link
                     key={labId}
                     to={`/lab/${labId}`}
-                    className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition flex items-center gap-1.5 ${
+                    className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition flex items-center gap-2 ${
                       isActive
                         ? 'bg-[#17368A] text-white shadow-xs'
-                        : 'text-[#1F2937] hover:text-[#17368A] hover:bg-[#17368A]/5'
+                        : 'text-[#111827] hover:text-[#17368A] hover:bg-black/5'
                     }`}
                   >
                     <span
-                      className="w-2 h-2 rounded-full"
+                      className="w-2.5 h-2.5 rounded-full ring-2 ring-white/60 shrink-0"
                       style={{ backgroundColor: isActive ? '#E5C17B' : lab.accentHex }}
                     />
                     <span>{lab.shortName}</span>
