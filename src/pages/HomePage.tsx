@@ -30,8 +30,16 @@ export const HomePage: React.FC = () => {
 
   return (
     <main className="min-h-screen">
-      <section className="relative bg-[#070D1C] text-white overflow-hidden py-20 lg:py-28 text-center">
-        <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:24px_24px]" />
+      <section className="relative bg-[#070D1C] text-white overflow-hidden py-24 lg:py-32 text-center">
+        <div className="absolute inset-0 pointer-events-none">
+          <img
+            src="./assets/fasilitas/se-1.jpg"
+            alt="Laboratorium Teknik Informatika UIKA"
+            className="w-full h-full object-cover object-center scale-105 filter blur-[1px] brightness-[0.28] contrast-125"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#070D1C]/90 via-[#0A1633]/85 to-[#070D1C]" />
+          <div className="absolute inset-0 bg-[#091124]/40 mix-blend-multiply" />
+        </div>
 
         <div className="relative max-w-[1536px] mx-auto px-4 sm:px-8 lg:px-12 flex flex-col items-center">
           <div className="max-w-4xl mx-auto flex flex-col items-center">
